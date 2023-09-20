@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" defer src="sales-orders-graph.js"></script>
+    <script type="module" defer src="toppings-graph.js"></script>
+    <script type="module" defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="menu-wrapper">
+          <img
+            id="sidebar-toggle"
+            src="./assets/images/menu-icon.svg"
+            alt="menu"
+          />
+        </div>
+
+        <p class="title">Dashboard</p>
+      </header>
+
+      <div class="sidebar">
+        <div class="logo">
+          <img src="./assets/images/pizza-logo.webp" alt="logo" />
+          <p>PIZZA SHOP</p>
+        </div>
+        <ul>
+          <li class="active">
+            <object
+              class=""
+              data="./assets/images/pai-icon.svg"
+              type="image/svg+xml"
+              alt="icon"
+              title="icon"
+            ></object>
+            Dashboard
+          </li>
+          <li>
+            <object
+              class=""
+              data="./assets/images/shopping-cart.svg"
+              type="image/svg+xml"
+              alt="icon"
+              title="icon"
+            ></object
+            >Reports
+          </li>
+          <li>
+            <object
+              class=""
+              data="./assets/images/graph-icon.svg"
+              type="image/svg+xml"
+              alt="icon"
+              title="icon"
+            ></object
+            >Order
+          </li>
+          <li>
+            <object
+              class=""
+              data="./assets/images/message-icon.svg"
+              type="image/svg+xml"
+              alt="icon"
+              title="icon"
+            ></object>
+            Messages
+          </li>
+          <li>
+            <object
+              class=""
+              data="./assets/images/settings-icon.svg"
+              type="image/svg+xml"
+              alt="icon"
+              title="icon"
+            ></object
+            >Settings
+          </li>
+          <li>
+            <object
+              class=""
+              data="./assets/images/sign-out-icon.svg"
+              type="image/svg+xml"
+              alt="icon"
+              title="icon"
+            ></object
+            >Sigh Out
+          </li>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        <div class="cards">
+          <div class="cards-header">
+            <div class="cards-titles">
+              <p class="cards-title">Today's Sale</p>
+              <p class="cards-subtitle">Sales Summary</p>
+            </div>
+            <div class="cards-export">
+              <img
+                width="16px"
+                src="./assets/images/export-icon.svg"
+                alt="export"
+              />Export
+            </div>
+          </div>
+
+          <div id="cards-wrapper" class="cards-wrapper">
+            <div class="card card-bgcolor-pink">
+              <div class="">
+                <img
+                  width="32px"
+                  height="32px"
+                  src="./assets/images/sales-card-icon.svg"
+                  alt="sales icon"
+                />
+              </div>
+              <p class="card-main"><i>$ </i>1K</p>
+              <p class="card-title">Total Sales</p>
+              <p class="card-growth">+8% from yesterday</p>
+            </div>
+
+            <div class="card card-bgcolor-yellow">
+              <div class="">
+                <img
+                  width="32px"
+                  height="32px"
+                  src="./assets/images/order-card-icon.svg"
+                  alt="sales icon"
+                />
+              </div>
+              <p class="card-main">80</p>
+              <p class="card-title">Total Orders</p>
+              <p class="card-growth">+5% from yesterday</p>
+            </div>
+
+            <div class="card card-bgcolor-green">
+              <div class="">
+                <img
+                  width="32px"
+                  height="32px"
+                  src="./assets/images/product-card-icon.svg"
+                  alt="sales icon"
+                />
+              </div>
+              <p class="card-main">221</p>
+              <p class="card-title">Products Sold</p>
+              <p class="card-growth">+1.2% from yesterday</p>
+            </div>
+
+            <div class="card card-bgcolor-purple">
+              <div class="">
+                <img
+                  width="32px"
+                  height="32px"
+                  src="./assets/images/cutomer-card-icon.svg"
+                  alt="sales icon"
+                />
+              </div>
+              <p class="card-main">35</p>
+              <p class="card-title">New Customers</p>
+              <p class="card-growth">+2% from yesterday</p>
+            </div>
+          </div>
+        </div>
+
+        <dialog id="edit-dialog"></dialog>
+
+        <div class="orders-table">
+          <section class="table__body">
+            <table>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Branch</th>
+                  <th>Order Date</th>
+                  <th>Status</th>
+                  <th>Price</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Zinzu Chan Lee</td>
+                  <td>Seoul</td>
+                  <td>17 Dec, 2022</td>
+                  <td>
+                    <p class="status received">Received</p>
+                  </td>
+                  <td><strong> $128.90 </strong></td>
+                  <td>
+                    <img
+                      width="24"
+                      height="24"
+                      src="./assets/images/edit-icon.svg"
+                      alt="edit order"
+                    /><img
+                      src="./assets/images/delete-icon.svg"
+                      width="24"
+                      height="24"
+                      alt="delete order"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jeet Saru</td>
+                  <td>Kathmandu</td>
+                  <td>27 Aug, 2023</td>
+                  <td>
+                    <p class="status inprogress">In Progress</p>
+                  </td>
+                  <td><strong>$5350.50</strong></td>
+                  <td>
+                    <img
+                      width="24"
+                      height="24"
+                      src="./assets/images/edit-icon.svg"
+                      alt="edit order"
+                    /><img
+                      src="./assets/images/delete-icon.svg"
+                      width="24"
+                      height="24"
+                      alt="delete order"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Sonal Gharti</td>
+                  <td>Tokyo</td>
+                  <td>14 Mar, 2023</td>
+                  <td>
+                    <p class="status finished">Finished</p>
+                  </td>
+                  <td><strong>$210.40</strong></td>
+                  <td>
+                    <img
+                      width="24"
+                      height="24"
+                      src="./assets/images/edit-icon.svg"
+                      alt="edit order"
+                    /><img
+                      src="./assets/images/delete-icon.svg"
+                      width="24"
+                      height="24"
+                      alt="delete order"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Sonal Gharti</td>
+                  <td>Tokyo</td>
+                  <td>14 Mar, 2023</td>
+                  <td>
+                    <p class="status finished">Finished</p>
+                  </td>
+                  <td><strong>$210.40</strong></td>
+                  <td>
+                    <img
+                      width="24"
+                      height="24"
+                      src="./assets/images/edit-icon.svg"
+                      alt="edit order"
+                    /><img
+                      src="./assets/images/delete-icon.svg"
+                      width="24"
+                      height="24"
+                      alt="delete order"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Sonal Gharti</td>
+                  <td>Tokyo</td>
+                  <td>14 Mar, 2023</td>
+                  <td>
+                    <p class="status finished">Finished</p>
+                  </td>
+                  <td><strong>$210.40</strong></td>
+                  <td>
+                    <img
+                      width="24"
+                      height="24"
+                      src="./assets/images/edit-icon.svg"
+                      alt="edit order"
+                    /><img
+                      src="./assets/images/delete-icon.svg"
+                      width="24"
+                      height="24"
+                      alt="delete order"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Sonal Gharti</td>
+                  <td>Tokyo</td>
+                  <td>14 Mar, 2023</td>
+                  <td>
+                    <p class="status finished">Finished</p>
+                  </td>
+                  <td><strong>$210.40</strong></td>
+                  <td>
+                    <img
+                      width="24"
+                      height="24"
+                      src="./assets/images/edit-icon.svg"
+                      alt="edit order"
+                    /><img
+                      src="./assets/images/delete-icon.svg"
+                      width="24"
+                      height="24"
+                      alt="delete order"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Sonal Gharti</td>
+                  <td>Tokyo</td>
+                  <td>14 Mar, 2023</td>
+                  <td>
+                    <p class="status finished">Finished</p>
+                  </td>
+                  <td><strong>$210.40</strong></td>
+                  <td>
+                    <img
+                      width="24"
+                      height="24"
+                      src="./assets/images/edit-icon.svg"
+                      alt="edit order"
+                    /><img
+                      src="./assets/images/delete-icon.svg"
+                      width="24"
+                      height="24"
+                      alt="delete order"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Sonal Gharti</td>
+                  <td>Tokyo</td>
+                  <td>14 Mar, 2023</td>
+                  <td>
+                    <p class="status finished">Finished</p>
+                  </td>
+                  <td><strong>$210.40</strong></td>
+                  <td>
+                    <img
+                      width="24"
+                      height="24"
+                      src="./assets/images/edit-icon.svg"
+                      alt="edit order"
+                    /><img
+                      src="./assets/images/delete-icon.svg"
+                      width="24"
+                      height="24"
+                      alt="delete order"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+
+        <div class="data">
+          <canvas id="day-rev"></canvas>
+        </div>
+
+        <div class="data2">
+          <canvas id="toppings"></canvas>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
