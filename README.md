@@ -6,6 +6,8 @@
 
 ![Dashboard mobile Image](/photos/dashboard-mobile.png)
 
+![Dashboard Edit Order From Table Image](/photos/dashboard-edit-order.png)
+
 ## order stations Images:
 
 ![Order Station Image](/photos/order-full.jpeg)
