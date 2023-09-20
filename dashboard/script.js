@@ -4,7 +4,6 @@ import { toppingsChart } from "./toppings-graph.js";
 const toggleButton = document.getElementById("sidebar-toggle");
 const sidebar = document.querySelector(".sidebar");
 const container = document.querySelector(".container");
-// const lis = document.querySelectorAll(".sidebar li");
 const cards = document.getElementById("cards-wrapper").children;
 const dialog = document.getElementById("edit-dialog");
 
@@ -76,24 +75,30 @@ function addActionButtons(tbody, td, row) {
 
     if (!userConfirmed) return;
 
-    const res = await fetch(`http://localhost:3001/order/${row.id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://pizza-shop-86lg.onrender.com/order/${row.id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     // refetch or just delete from ui
     tbody.removeChild(tr);
   });
 
   editAction.addEventListener("click", async (e) => {
-    const order = await fetch(`http://localhost:3001/order/${row.id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const order = await fetch(
+      `https://pizza-shop-86lg.onrender.com/order/${row.id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     openEditDialog(row, (await order.json()).order);
   });
@@ -125,17 +130,9 @@ const updateUI = async () => {
   updateTable(res.table);
 };
 
-const interval = setInterval(updateUI, 5000);
+const interval = setInterval(updateUI, 15000);
 
 async function orders_status() {
-  try {
-    const res = await fetch("http://localhost:3001/order", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  } catch (err) {}
   return {
     cards: [
       [rand(100, 9000), rand(1, 30)],
