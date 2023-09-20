@@ -9,7 +9,7 @@
     "start-dev": "nodemon src/app.js"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=16.18.0"
   },
   "keywords": [],
   "author": "",
