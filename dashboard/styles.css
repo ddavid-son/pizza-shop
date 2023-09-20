@@ -292,14 +292,7 @@ main.table {
   overflow: hidden;
 }
 
-.table__header {
-  padding: 0.8rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.table__body {
+.table-body {
   height: 100%;
   border-radius: 0.6rem;
 
@@ -307,18 +300,18 @@ main.table {
   overflow: overlay;
 }
 
-.table__body::-webkit-scrollbar {
+.table-body::-webkit-scrollbar {
   width: 0.5rem;
   height: 0.5rem;
 }
 
-.table__body::-webkit-scrollbar-thumb {
+.table-body::-webkit-scrollbar-thumb {
   border-radius: 1rem;
   background-color: var(--clr-active);
   visibility: hidden;
 }
 
-.table__body:hover::-webkit-scrollbar-thumb {
+.table-body:hover::-webkit-scrollbar-thumb {
   visibility: visible;
 }
 
